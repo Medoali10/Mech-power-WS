@@ -17,8 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   final databaseRef = FirebaseDatabase.instance.reference();
-
-  var volt = 0;
+  double volt = 0;
   double current = 0.18;
   double power = 0;
 
@@ -27,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     databaseRef.onValue.listen((event) {
         setState(() {
-          volt = event.snapshot.value["float"];
+          volt = double.parse((event.snapshot.value["float"]).toStringAsPrecision(5));
           if(volt == 0){
             current = 0;
           }else {
