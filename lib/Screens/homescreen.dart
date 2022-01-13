@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }else {
             current = 0.18;
           }
-          power = event.snapshot.value["float"] * current;
+          power = double.parse((event.snapshot.value["float"]  * current).toStringAsPrecision(5));
         });
 });
   }
